@@ -1,22 +1,37 @@
 package steps;
 
+import static core.DriverFactory.getDriver;
+import static core.DriverFactory.killDriver;
+
+import core.DriverFactory;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.WebElement;
 import pages.insertItemIntoListPage;
 
 public class InsertItemIntoList {
 
-    private insertItemIntoListPage page = new insertItemIntoListPage();
+    private insertItemIntoListPage page;
+    private WebElement visibleMark;
 
-    WebElement visibleMark;
+    @Before
+    private void start(String url){
+        getDriver().get(url);
+        page = new insertItemIntoListPage();
+    }
+
+    @After
+    public void ends(){
+        killDriver();
+    }
 
     @Given("i access the Awesome To-Do List (.*)")
     public void acessarAwesomeToDoList(String atd_url){
-        page.driver.get(atd_url);
         Assert.assertEquals("Awesome To-Do List", page.getMainText());
     }
 

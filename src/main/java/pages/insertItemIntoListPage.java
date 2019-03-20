@@ -1,24 +1,18 @@
 package pages;
 
+import static core.DriverFactory.getDriver;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import runners.runner;
 
 import java.util.List;
 
 public class insertItemIntoListPage {
 
-    public WebDriver driver = new ChromeDriver();
-
-
     private Alert alert;
     private WebElement green_check;
-    private WebElement red_arrow_back;
-
+    private WebDriver driver = getDriver();
 
     public String getMainText(){
         return driver.findElement(By.tagName("h1")).getText();
@@ -49,7 +43,7 @@ public class insertItemIntoListPage {
             green_check = driver.findElement(By.xpath("/html/body/div[1]/app-root/div[2]/app-todo-list/ul/li[1]/app-todo-item/div/div/a[1]/i"));
             return green_check;
         }
-        red_arrow_back = driver.findElement(By.xpath("/html/body/div[1]/app-root/div[2]/app-todo-list/ul/li[1]/app-todo-item/div/div/a[2]/i"));
+        WebElement red_arrow_back = driver.findElement(By.xpath("/html/body/div[1]/app-root/div[2]/app-todo-list/ul/li[1]/app-todo-item/div/div/a[2]/i"));
         return red_arrow_back;
     }
 
