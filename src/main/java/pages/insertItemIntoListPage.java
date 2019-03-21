@@ -1,6 +1,7 @@
 package pages;
 
 import static core.DriverFactory.getDriver;
+import core.basePage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class insertItemIntoListPage {
+public class insertItemIntoListPage extends basePage {
 
     private Alert alert;
     private WebElement green_check;
